@@ -50,9 +50,37 @@
             order3.DisplayOrder();
             Console.WriteLine("");
 
-            Campinos.HandleOrder();
-            Campinos.ShowNextOrder(order1);
             Campinos.ShowOrderCount();
+
+            Campinos.ShowNextOrder(order1);
+
+            Campinos.HandleOrder();
+
+            Campinos.ShowOrderCount();
+
+            Campinos.ShowNextOrder(order2);
+
+            Campinos.HandleOrder();
+
+            Campinos.ShowOrderCount();
+
+            Campinos.ShowNextOrder(order3);
+
+            Campinos.HandleOrder();
+
+            List<MenuItem> Order4_items = new List<MenuItem>();
+            Order4_items.Add(KebabRulle);
+
+            Orders order4 = new Orders(Order4_items,3);
+            Campinos.CreateOrder(order4);
+
+            Console.WriteLine("Orders");
+            order4.DisplayOrder();
+
+            Campinos.HandleOrder();
+
+            Campinos.HandleOrder();
+
         }
     }
 }

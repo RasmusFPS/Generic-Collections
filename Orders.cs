@@ -10,15 +10,13 @@ namespace Generic_Collections
     internal class Orders
     {
         public static int orderidcounter = 1;
-        private int _orderid;
+        public int _orderid;
         private List<MenuItem> _orderItems;
         private int _tableNumber;
-        private decimal Sum = 0;
 
         public Orders(List<MenuItem> orderItems, int tableNumber)
         {
-            _orderid = orderidcounter;
-            orderidcounter++;
+            this._orderid = orderidcounter++;
             _orderItems = orderItems;
             _tableNumber = tableNumber;
         }
@@ -30,14 +28,15 @@ namespace Generic_Collections
 
         public void DisplayOrder()
         {
-            orderidcounter++;
+            decimal localSum = 0;
+
             Console.WriteLine($"--- Order {_orderid} ---");
             foreach (var item in _orderItems)
             {
                 Console.WriteLine($"- {item.Name} - {item.Price}");
-                Sum = item.Price + Sum;
+                localSum = item.Price + localSum;
             }
-            Console.WriteLine($"Final Sum: {Sum}");
+            Console.WriteLine($"Final Sum: {localSum:C}");
             
         }
 

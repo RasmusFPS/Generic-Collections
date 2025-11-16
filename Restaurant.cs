@@ -66,5 +66,13 @@ namespace Generic_Collections
             Orders Nextorders = _queue.Peek();
             Nextorders.DisplayOrder();
         }
+
+        public void ShowOrders()
+        {
+            foreach (var orders in _queue)
+            {
+                Console.WriteLine(orders);
+            }
+        }
     }
 }

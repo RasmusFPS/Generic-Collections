@@ -36,7 +36,7 @@ namespace Generic_Collections
                 Console.WriteLine($"- {item.Name} - {item.Price}");
                 localSum = item.Price + localSum;
             }
-            Console.WriteLine($"Final Sum: {localSum:C}");
+            Console.WriteLine($"Final Sum: {localSum:C}\nTo table {_tableNumber}");
             
         }
 

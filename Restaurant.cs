@@ -51,7 +51,7 @@ namespace Generic_Collections
             }
             else
             {
-                Console.WriteLine("Det finns ingen Order");
+                Console.WriteLine("\nNo Orders");
             }
         }
         

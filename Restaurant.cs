@@ -37,15 +37,17 @@ namespace Generic_Collections
         {
             _count++;
             _queue.Enqueue(orders);
-            Console.WriteLine($"Order {_count} coming up");
+            Console.WriteLine($"Order {orders._orderid} coming up");
         }
 
         public void HandleOrder()
         {
             if (_queue.Count > 0)
             {
-                Orders orders = _queue.Dequeue();
-                Console.WriteLine("");
+                Orders FinnishedOrders = _queue.Dequeue();
+                Console.WriteLine("\n------------------------");
+                Console.WriteLine($"order {FinnishedOrders._orderid} is finished");
+                Console.WriteLine("------------------------\n");
             }
             else
             {
@@ -55,13 +57,14 @@ namespace Generic_Collections
         
         public void ShowOrderCount()
         {
-            _count++;
-            Console.WriteLine($"There are {_count} in queue");
+            Console.WriteLine($"There are orders {_queue.Count} in queue");
+            Console.WriteLine("------------------------");
         }
 
         public void ShowNextOrder(Orders orders)
         {
-            orders.DisplayOrder();
+            Orders Nextorders = _queue.Peek();
+            Nextorders.DisplayOrder();
         }
     }
 }

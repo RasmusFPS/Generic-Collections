@@ -61,7 +61,7 @@ namespace Generic_Collections
             Console.WriteLine("------------------------");
         }
 
-        public void ShowNextOrder(Orders orders)
+        public void ShowNextOrder()
         {
             Orders Nextorders = _queue.Peek();
             Nextorders.DisplayOrder();
@@ -69,10 +69,20 @@ namespace Generic_Collections
 
         public void ShowOrders()
         {
-            foreach (var orders in _queue)
+            Console.WriteLine("\n--- All Current Orders in Queue ---");
+            if (_queue.Count == 0)
             {
-                Console.WriteLine(orders);
+                Console.WriteLine("The queue is empty.");
             }
+            else
+            {
+                foreach (var order in _queue)
+                {
+                    order.DisplayOrder();
+                    Console.WriteLine("");
+                }
+            }
+            Console.WriteLine("-----------------------------------\n");
         }
     }
 }

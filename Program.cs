@@ -1,85 +1,72 @@
-﻿namespace Generic_Collections
+﻿// Fil: Program.cs
+using System;
+using System.Collections.Generic;
+
+namespace Generic_Collections
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Restaurant Campinos = new Restaurant();
+            Restaurant campinos = new Restaurant();
 
-            MenuItem pizza = new MenuItem(1,"Pizza",125);
-            MenuItem KebabRulle = new MenuItem(2, "Kebab Rulle", 123);
-            MenuItem KababTalrik = new MenuItem(3,"Kebab Talrik",130);
-            MenuItem Sallad = new MenuItem(4, "Sallad", 250);
-            Console.WriteLine("");
+            //Adding the menu items
+            MenuItem pizza = new MenuItem(1, "Pizza", 125m);
+            MenuItem kebabRulle = new MenuItem(2, "Kebab Rulle", 123m);
+            MenuItem kebabTallrik = new MenuItem(3, "Kebab Tallrik", 130m);
+            MenuItem sallad = new MenuItem(4, "Sallad", 95m);
 
-            Campinos.AddtoMenu(pizza);
-            Campinos.AddtoMenu(KebabRulle);
-            Campinos.AddtoMenu (KababTalrik);
-            Campinos.AddtoMenu(Sallad);
+            campinos.AddtoMenu(pizza);
+            campinos.AddtoMenu(kebabRulle);
+            campinos.AddtoMenu(kebabTallrik);
+            campinos.AddtoMenu(sallad);
 
-            Campinos.ShowMenu();
+            // Steg 3: Skriv ut menyn.
+            campinos.ShowMenu();
 
+            //Creates new order
+            Orders order1 = new Orders(new List<MenuItem> { pizza, kebabRulle, kebabTallrik}, 28);
+            Orders order2 = new Orders(new List<MenuItem> { kebabTallrik, sallad }, 67);
+            Orders order3 = new Orders(new List<MenuItem> { pizza, sallad, pizza }, 2);
 
-            List<MenuItem> Order1_items = new List<MenuItem>();
-            Order1_items.Add(pizza);
-            Order1_items.Add (KebabRulle);
+            campinos.CreateOrder(order1);
+            campinos.CreateOrder(order2);
+            campinos.CreateOrder(order3);
 
-            List<MenuItem> Order2_items = new List<MenuItem>();
-            Order2_items.Add(KababTalrik);
-            Order2_items.Add(Sallad);
-            Order2_items.Add(KababTalrik);
+            //Show all orders
+            campinos.ShowOrders();
 
-            List<MenuItem> Order3_items = new List<MenuItem>();
-            Order3_items.Add(pizza);
-            Order3_items.Add(pizza);
-            Order3_items.Add(pizza);
+            //Show all orders in queue
+            campinos.ShowOrderCount();
 
-            Orders order1 = new Orders(Order1_items, 28);
-            Orders order2 = new Orders(Order2_items, 67);
-            Orders order3 = new Orders(Order3_items, 2);
+            //Show next order
+            campinos.ShowNextOrder();
 
-            Campinos.CreateOrder(order1);
-            Campinos.CreateOrder(order2);
-            Campinos.CreateOrder(order3);
-            Console.WriteLine("");
+            //Handels on order
+            campinos.HandleOrder();
 
-            Console.WriteLine("Orders");
-            order1.DisplayOrder();
-            Console.WriteLine("");
-            order2.DisplayOrder();
-            Console.WriteLine("");
-            order3.DisplayOrder();
-            Console.WriteLine("");
+            //Show how many orders in queue
+            campinos.ShowOrderCount();
 
-            Campinos.ShowOrderCount();
+            //New order
+            Orders order4 = new Orders(new List<MenuItem> { kebabRulle, kebabRulle, sallad }, 3);
+            campinos.CreateOrder(order4);
 
-            Campinos.ShowNextOrder(order1);
+            //Shows all the orders in queue
+            campinos.ShowOrderCount();
 
-            Campinos.HandleOrder();
+            //Handels 2 orders
+            campinos.HandleOrder();
+            campinos.HandleOrder();
 
-            Campinos.ShowOrderCount();
+            
+            campinos.ShowOrderCount();
 
-            List<MenuItem> Order4_items = new List<MenuItem>();
-            Order4_items.Add(KebabRulle);
+            campinos.ShowNextOrder();
 
-            Orders order4 = new Orders(Order4_items, 3);
-            Campinos.CreateOrder(order4);
+            campinos.HandleOrder();
 
-            Campinos.ShowOrderCount();
-
-            Campinos.HandleOrder();
-            Campinos.HandleOrder();
-
-            Campinos.ShowOrderCount();
-
-            Campinos.ShowNextOrder(order3);
-
-            Campinos.HandleOrder();
-
-            Campinos.HandleOrder();
-
-            Campinos.ShowOrders();
-
+            campinos.ShowOrderCount();
         }
     }
 }
